@@ -12,12 +12,13 @@ public class JDBCDemo {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/school", "root", "root");
-            String sql = "update account set balance = 500 where id=1";
+            String sql = "update account set balance = 1500 where id=1";
+            String insert ="delete from account where id=3";
             statement = connection.createStatement();
             int i = statement.executeUpdate(sql);
-
+            statement.executeUpdate(insert);
             if(i!=0){
-                System.out.println("1111");
+                System.out.println("111");
             }
             statement.close();
             connection.close();
