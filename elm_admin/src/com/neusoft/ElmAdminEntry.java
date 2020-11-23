@@ -32,7 +32,7 @@ public class ElmAdminEntry {
                 System.out.println("2. 搜索商家");
                 System.out.println("3. 新建商家");
                 System.out.println("4. 删除商家");
-                System.out.println("5. 退出退出系统");
+                System.out.println("5. 退出系统");
                 System.out.println("---------------");
                 System.out.print("输入你的选择:");
                 meau=input.nextInt();

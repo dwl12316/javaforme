@@ -5,7 +5,7 @@ public class Food {
     private String foodName;
     private String foodExplain;
     private Double foodPrice;
-    private String businessId;
+    private Integer businessId;
 
     @Override
     public String toString() {
@@ -49,18 +49,18 @@ public class Food {
         this.foodPrice = foodPrice;
     }
 
-    public String getBusinessId() {
+    public Integer getBusinessId() {
         return businessId;
     }
 
-    public void setBusinessId(String businessId) {
+    public void setBusinessId(Integer businessId) {
         this.businessId = businessId;
     }
 
     public Food() {
     }
 
-    public Food(Integer foodId, String foodName, String foodExplain, Double foodPrice, String businessId) {
+    public Food(Integer foodId, String foodName, String foodExplain, Double foodPrice, Integer businessId) {
         this.foodId = foodId;
         this.foodName = foodName;
         this.foodExplain = foodExplain;

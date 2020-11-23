@@ -2,7 +2,9 @@ package com.neusoft;
 
 import com.neusoft.domain.Business;
 import com.neusoft.view.BusinessView;
+import com.neusoft.view.FoodView;
 import com.neusoft.view.Impl.BusinessViewImpl;
+import com.neusoft.view.Impl.FoodViewImpl;
 
 import java.util.Scanner;
 
@@ -27,7 +29,7 @@ public class BusinessAdminEntry {
                 System.out.println("2. 修改商家信息");
                 System.out.println("3. 修改密码");
                 System.out.println("4. 所属商品管理");
-                System.out.println("5. 退出退出系统");
+                System.out.println("5. 退出系统");
                 System.out.println("---------------");
                 System.out.print("输入你的选择:");
                 meau=input.nextInt();
@@ -59,24 +61,29 @@ public class BusinessAdminEntry {
     public static void foodManager(Integer businessId){
         int meau=0;
         Scanner input =new Scanner(System.in);
+        FoodView foodView=new FoodViewImpl();
         while (meau!=5) {
             System.out.println("---------------");
             System.out.println("1. 查看食品信息");
             System.out.println("2. 修改食品信息");
             System.out.println("3. 增加食品信息");
             System.out.println("4. 删除食品信息");
-            System.out.println("5. 退出退出系统");
+            System.out.println("5. 退出二级系统");
             System.out.println("---------------");
             System.out.print("输入你的选择:");
             meau=input.nextInt();
             switch (meau){
                 case 1:
+                    foodView.showFoodList(businessId);
                     break;
                 case 2:
+                    foodView.updateFood(businessId);
                     break;
                 case 3:
+                    foodView.saveFood(businessId);
                     break;
                 case 4:
+                    foodView.removeFood(businessId);
                     break;
                 case 5:
                     break;

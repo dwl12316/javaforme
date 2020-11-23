@@ -39,26 +39,6 @@ public class AdminDaoImpl implements AdminDao {
     }
 
     @Override
-    public int saveAdmin(String adminName) {
-        return 0;
-    }
-
-    @Override
-    public int removeBusiness(int adminId) {
-        return 0;
-    }
-
-    @Override
-    public int updateBusiness(Admin admin) {
-        return 0;
-    }
-
-    @Override
-    public Business getBusinessId(int adminid) {
-        return null;
-    }
-
-    @Override
     public Admin getAdminByNameAndPassword(String adminName, String password) {
         Admin admin=null;
         String sql="select * from admin where adminName=? and password= ?";

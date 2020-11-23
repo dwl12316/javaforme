@@ -110,23 +110,14 @@ public class BusinessViewImpl implements BusinessView {
                 if(i<=2)
                     s=input.next();
                 else
-                    x=input.nextInt();
+                    x=input.nextDouble();
                 switch (i) {
-                    case 0:
-                        business.setBusinessName(s);
-                        break;
-                    case 1:
-                        business.setBusinessAddress(s);
-                        break;
-                    case 2:
-                        business.setBusinessExplain(s);
-                        break;
-                    case 3:
-                        business.setDeliveryPrice(x);
-                        break;
-                    case 4:
-                        business.setStarPrice(x);
-                        break;
+                    case 0: business.setBusinessName(s);break;
+                    case 1: business.setBusinessAddress(s);break;
+                    case 2: business.setBusinessExplain(s);break;
+                    case 3: business.setDeliveryPrice(x);break;
+                    case 4: business.setStarPrice(x);break;
+                    default:break;
                 }
             }
             i++;
