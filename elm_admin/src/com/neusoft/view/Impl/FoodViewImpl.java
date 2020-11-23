@@ -82,11 +82,16 @@ public class FoodViewImpl implements FoodView {
     public void removeFood(Integer businessId) {
         System.out.print("输入你要删除的食物id:");
         int foodId=input.nextInt();
-        int k=foodDao.removeFood(foodId);
-        if(k==0){
-            System.out.println("删除失败");
-        }else {
-            System.out.println("删除成功");
+        Food food=foodDao.getFoodById(foodId);
+        if(food!=null&&food.getBusinessId().equals(businessId)) {
+            int k = foodDao.removeFood(foodId);
+            if (k == 0) {
+                System.out.println("删除失败");
+            } else {
+                System.out.println("删除成功");
+            }
+        }else{
+            System.out.println("该商店无此食品");
         }
     }
 }
