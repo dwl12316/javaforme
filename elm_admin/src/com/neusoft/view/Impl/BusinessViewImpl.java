@@ -129,16 +129,22 @@ public class BusinessViewImpl implements BusinessView {
     public void updatePassword(Integer businessId) {
         BusinessDao dao =new BusinessDaoImpl();
         Business business=dao.getBusinessId(businessId);
+        int key=1;
         while (true) {
-            System.out.print("请输入旧密码:");
-            String oldPass = input.next();
+            if(key==1) {
+                System.out.print("请输入旧密码:");
+                String oldPass = input.next();
+                if (!business.getPassword().equals(oldPass)) {
+                    System.out.println("你的密码错了，请重新输入");
+                    continue;
+                }
+                key=0;
+            }
             System.out.print("请输入新密码:");
             String newPass = input.next();
             System.out.print("请再次输入新密码:");
             String beginNewPass = input.next();
-            if (!business.getPassword().equals(oldPass)) {
-                System.out.println("你的密码错了，请重新输入");
-            } else if (!newPass.equals(beginNewPass)) {
+            if (!newPass.equals(beginNewPass)) {
                 System.out.println("两次密码不一致");
             } else {
                 int i=dao.updateBusinessPassword(businessId,newPass);

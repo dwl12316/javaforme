@@ -19,8 +19,8 @@ public class BusinessAdminEntry {
         System.out.println("----------------------------------------------");
         BusinessView businessView=new BusinessViewImpl();
         Business business=businessView.login();
-        int businessId=business.getBusinessId();
         if(business!=null){
+            int businessId=business.getBusinessId();
             System.out.println("商家"+business.getBusinessName()+"欢迎你进入");
             int meau=0;
             while (meau!=5){

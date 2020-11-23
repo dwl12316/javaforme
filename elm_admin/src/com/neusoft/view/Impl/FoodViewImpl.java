@@ -45,7 +45,7 @@ public class FoodViewImpl implements FoodView {
         System.out.print("请输入你要修改的食品id:");
         int foodId=input.nextInt();
         Food food=foodDao.getFoodById(foodId);
-        if(food!=null){
+        if(food!=null&&food.getBusinessId().equals(businessId)){
             String []name= new String[]{"食品名称","食品介绍", "食品价格"};
             String s = null;
             double x=0;
@@ -74,12 +74,19 @@ public class FoodViewImpl implements FoodView {
                 System.out.println("修改失败");
             }
         }else {
-            System.out.println("无此食品");
+            System.out.println("该商店无此食品");
         }
     }
 
     @Override
     public void removeFood(Integer businessId) {
-
+        System.out.print("输入你要删除的食物id:");
+        int foodId=input.nextInt();
+        int k=foodDao.removeFood(foodId);
+        if(k==0){
+            System.out.println("删除失败");
+        }else {
+            System.out.println("删除成功");
+        }
     }
 }
