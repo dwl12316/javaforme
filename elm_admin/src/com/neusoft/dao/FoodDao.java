@@ -5,5 +5,5 @@ import com.neusoft.domain.Food;
 import java.util.List;
 
 public interface FoodDao {
-    public List<Food> listFood();
+    public List<Food> listFood(Integer businessId);
 }

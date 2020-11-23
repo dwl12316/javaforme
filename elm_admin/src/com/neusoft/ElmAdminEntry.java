@@ -13,6 +13,9 @@ import java.util.Scanner;
 
 public class ElmAdminEntry {
     public static void main(String[] args) {
+        run();
+    }
+    public static void run(){
         Scanner input = new Scanner(System.in);
         System.out.println("---------------------------------------");
         System.out.println("-------------欢迎进入饿了么后台------------");
@@ -23,7 +26,6 @@ public class ElmAdminEntry {
             int meau=0;
             System.out.println("登录成功");
             BusinessViewImpl businessView=new BusinessViewImpl();
-            BusinessDaoImpl dao=new BusinessDaoImpl();
             while (meau!=5){
                 System.out.println("---------------");
                 System.out.println("1. 查看所有商家");
@@ -61,4 +63,5 @@ public class ElmAdminEntry {
             System.out.println("登录失败");
         }
     }
+
 }

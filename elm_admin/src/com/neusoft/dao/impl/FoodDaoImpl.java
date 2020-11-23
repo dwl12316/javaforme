@@ -12,21 +12,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FoodDaoImpl implements FoodDao {
+    Connection connection=null;
+    PreparedStatement preparedStatement=null;
+    ResultSet resultSet=null;
     @Override
-    public List<Food> listFood() {
+    public List<Food> listFood(Integer businessId) {
             List<Food> list = new ArrayList<>();
             try {
-                Connection connection = JDBCUtils.getConnection();
-                String sql = "select * from food";
-                PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                ResultSet resultSet = preparedStatement.executeQuery();
+                connection = JDBCUtils.getConnection();
+                String sql = "select * from food where businessId=?";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1,businessId);
+                resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
                     int foodId=resultSet.getInt(1);
                     String foodName=resultSet.getString(2);
                     String foodExplain=resultSet.getString(3);
                     double foodPrice=resultSet.getDouble(4);
-                    String businessId=resultSet.getString(5);
-                    Food food=new Food(foodId,foodName,foodExplain,foodPrice,businessId);
+                    String businessId1=resultSet.getString(5);
+                    Food food=new Food(foodId,foodName,foodExplain,foodPrice,businessId1);
                     list.add(food);
                 }
                 JDBCUtils.close(resultSet, preparedStatement, connection);

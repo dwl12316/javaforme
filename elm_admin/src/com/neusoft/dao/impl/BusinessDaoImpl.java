@@ -1,18 +1,21 @@
 package com.neusoft.dao.impl;
 
 import com.neusoft.dao.BusinessDao;
+import com.neusoft.domain.Admin;
 import com.neusoft.domain.Business;
 import com.neusoft.utils.JDBCUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class BusinessDaoImpl implements BusinessDao {
 
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
+    Scanner input=new Scanner(System.in);
 
     @Override
     public List<Business> listBusiness(String businessName,String businessAddress) {
@@ -142,5 +145,51 @@ public class BusinessDaoImpl implements BusinessDao {
             JDBCUtils.close(resultSet,preparedStatement,connection);
         }
         return business;
+    }
+
+    @Override
+    public Business getBusinessIdAndBusinessPassword(String businessId, String password) {
+        Business business=null;
+        String sql="select * from business where businessId=? and password= ?";
+        try {
+            connection=JDBCUtils.getConnection();
+            preparedStatement=connection.prepareStatement(sql);
+            preparedStatement.setString(1,businessId);
+            preparedStatement.setString(2,password);
+            resultSet=preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int bId = resultSet.getInt(1);
+                String password1 = resultSet.getString(2);
+                String businessName = resultSet.getString(3);
+                String businessAddress = resultSet.getString(4);
+                String businessExplain = resultSet.getString(5);
+                double starPrice = resultSet.getDouble(6);
+                double deliveryPrice = resultSet.getDouble(7);
+                business = new Business(bId, password1, businessName, businessAddress, businessExplain, starPrice, deliveryPrice);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.close(resultSet,preparedStatement,connection);
+        }
+        return business;
+    }
+
+    @Override
+    public int updateBusinessPassword(Integer businessId,String newPassword) {
+        String sql="update business set password=? where businessId=?";
+        int res=0;
+        try {
+            connection=JDBCUtils.getConnection();
+            preparedStatement=connection.prepareStatement(sql);
+            preparedStatement.setString(1,newPassword);
+            preparedStatement.setInt(2,businessId);
+            res=preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.close(resultSet,preparedStatement,connection);
+        }
+        return res;
     }
 }
