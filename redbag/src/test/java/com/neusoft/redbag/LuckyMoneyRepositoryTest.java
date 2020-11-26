@@ -32,13 +32,22 @@ public class LuckyMoneyRepositoryTest {
     @Test
     public void save(){
         LuckyMoney luckyMoney=new LuckyMoney();
-        luckyMoney.setConsumer("gcf");
-        luckyMoney.setMoney(new BigDecimal(50));
-        luckyMoney.setProducey("fff");
+        luckyMoney.setConsumer("gdf");
+//        luckyMoney.setMoney(new BigDecimal(50));
+//        luckyMoney.setProducer("ff");
         repository.save(luckyMoney);
     }
     @Test
     public void delete(){
-        repository.deleteById(1);
+        repository.deleteById(4);
+    }
+    @Test
+    public void update(){
+        LuckyMoney luckyMoney = new LuckyMoney();
+        luckyMoney.setConsumer("王五");
+        luckyMoney.setMoney(new BigDecimal(21));
+        luckyMoney.setProducer("赵六");
+        luckyMoney.setId(2);
+        repository.save(luckyMoney);
     }
 }

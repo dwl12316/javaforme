@@ -17,12 +17,12 @@ import java.math.BigDecimal;
 public class LuckyMoney {
     @Id
     //代表主键
-    @GeneratedValue
+    @GeneratedValue//自增长
     private Integer id;
     // 红包金额
     private BigDecimal money;
     // 发红包的人
-    private String producey;
+    private String producer;
     // 收红包的人
     private String consumer;
 

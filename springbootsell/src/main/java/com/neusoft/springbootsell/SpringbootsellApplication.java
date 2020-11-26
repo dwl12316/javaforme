@@ -1,13 +1,13 @@
-package com.neusoft.redbag;
+package com.neusoft.springbootsell;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @SpringBootApplication
-public class RedbagApplication {
+public class SpringbootsellApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(RedbagApplication.class, args);
+        SpringApplication.run(SpringbootsellApplication.class, args);
     }
 
 }
