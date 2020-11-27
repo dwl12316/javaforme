@@ -39,7 +39,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public void increaseStock(String productId) {
+    public void onSale(String productId) {
         ProductInfo productInfo=repository.findOne(productId);
         if(productInfo == null){
             throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
@@ -52,7 +52,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public void decreaseStock(String productId) {
+    public void offSale(String productId) {
         ProductInfo productInfo=repository.findOne(productId);
         if(productInfo == null){
             throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
@@ -62,5 +62,15 @@ public class ProductServiceImpl implements ProductService{
         }
         productInfo.setProductStatus(ProductStatus.DOWN.getCode());
         repository.save(productInfo);
+    }
+
+    @Override
+    public void increaseStock(String productId) {
+
+    }
+
+    @Override
+    public void decreaseStock(String productId) {
+
     }
 }
