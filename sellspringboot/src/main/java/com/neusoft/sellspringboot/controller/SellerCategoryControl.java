@@ -3,7 +3,6 @@ package com.neusoft.sellspringboot.controller;
 import com.neusoft.sellspringboot.dataobject.ProductCategory;
 import com.neusoft.sellspringboot.exception.SellException;
 import com.neusoft.sellspringboot.services.CategoryService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;

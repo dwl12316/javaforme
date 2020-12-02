@@ -3,7 +3,7 @@
 <body>
 <div class="container col-md-offset-4 col-lg-offset-4col-xl-offset-4" style="padding-top: 250px;">
     <div class="row clearfix">
-        <div class="col-md-12 column" style="color: #64468f;border-width:1px; border-color: #64468f">
+        <div class="col-md-12 column" style="color: #64468f;border-width:1px;">
             <form class="form-horizontal" role="form"  action="/seller/user/save" method="post">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">用户账号</label>
